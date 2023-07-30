@@ -37,7 +37,7 @@ class AddEditNoteViewModel @Inject constructor(
     val eventFlow = _eventFlow.asSharedFlow()
 
     init {
-        savedStateHandle.get<Int>("note_id")?.let { noteId ->
+        savedStateHandle.get<Int>("noteId")?.let { noteId ->
             if (noteId != -1) {
                 viewModelScope.launch {
                     notesUseCases.getNoteUseCase(noteId)?.also {note ->

@@ -22,11 +22,14 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
 import com.bayutb.ynnotes.feature_note.domain.model.Note
+import com.bayutb.ynnotes.ui.theme.YNNotesTheme
 
 @Composable
 fun NoteItem(
@@ -69,7 +72,7 @@ fun NoteItem(
         ) {
             Text(
                 text = note.title,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurface,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
@@ -92,5 +95,19 @@ fun NoteItem(
                 tint = MaterialTheme.colorScheme.onSurface
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewItem() {
+    YNNotesTheme {
+        NoteItem(note = Note(
+            id = 1,
+            title = "Test",
+            content = "Test123",
+            timeStamp = 12312312,
+            color = Color.Cyan.toArgb()
+        ), onDeleteClick = {})
     }
 }
